@@ -88,17 +88,13 @@ public class RobotState {
 
     @Override
     public String toString() {
-        if (this.equals(UNKNOWN)) {
-            return "";
-        } else {
-            StringBuilder report = new StringBuilder();
-            report.append(xPos);
-            report.append(",");
-            report.append(yPos);
-            report.append(",");
-            report.append(direction);
+        StringBuilder report = new StringBuilder();
+        report.append(xPos);
+        report.append(",");
+        report.append(yPos);
+        report.append(",");
+        report.append(direction);
 
-            return report.toString();
-        }
+        return report.toString();
     }
 }

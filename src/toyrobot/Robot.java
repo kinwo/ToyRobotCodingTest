@@ -42,6 +42,10 @@ public class Robot {
     }
 
     public String report() {
-        return state.toString();
+        if (state.equals(UNKNOWN)) {
+            return "";
+        } else {
+            return state.toString();
+        }
     }
 }
