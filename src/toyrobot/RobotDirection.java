@@ -5,11 +5,61 @@ package toyrobot;
  */
 public enum RobotDirection {
 
-    NORTH("NORTH"),
-    SOUTH("SOUTH"),
-    EAST("EAST"),
-    WEST("WEST"),
-    UNDEFINED("UNDEFINED");
+    NORTH("NORTH") {
+        @Override
+        public RobotDirection left() {
+            return WEST;
+        }
+
+        @Override
+        public RobotDirection right() {
+            return EAST;
+        }
+    },
+    SOUTH("SOUTH") {
+        @Override
+        public RobotDirection left() {
+            return EAST;
+        }
+
+        @Override
+        public RobotDirection right() {
+            return WEST;
+        }
+    },
+    EAST("EAST") {
+        @Override
+        public RobotDirection left() {
+            return NORTH;
+        }
+
+        @Override
+        public RobotDirection right() {
+            return SOUTH;
+        }
+    },
+    WEST("WEST") {
+        @Override
+        public RobotDirection left() {
+            return SOUTH;
+        }
+
+        @Override
+        public RobotDirection right() {
+            return NORTH;
+        }
+    },
+    UNDEFINED("UNDEFINED") {
+        @Override
+        public RobotDirection left() {
+            return UNDEFINED;
+        }
+
+        @Override
+        public RobotDirection right() {
+            return UNDEFINED;
+        }
+    };
 
 
     private String direction;
@@ -17,4 +67,7 @@ public enum RobotDirection {
     RobotDirection(String direction) {
         this.direction = direction;
     }
+
+    public abstract RobotDirection left();
+    public abstract RobotDirection right();
 }

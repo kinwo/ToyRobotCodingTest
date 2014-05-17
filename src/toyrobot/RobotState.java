@@ -34,7 +34,25 @@ public class RobotState {
         return new RobotState(xPos, yPos, direction);
     }
 
-    public int getXPos() {
+    /**
+     * Helper method to create new state using existing x and y but turn left
+     *
+     * @return A new instance of RobotState
+     */
+    public RobotState turnLeft() {
+        return new RobotState(xPos, yPos, direction.left());
+    }
+
+    /**
+     * Helper method to create new state using existing x and y but turn left
+     *
+     * @return A new instance of RobotState
+     */
+    public RobotState turnRight() {
+        return new RobotState(xPos, yPos, direction.right());
+    }
+
+    public int xPos() {
         return xPos;
     }
 
@@ -42,7 +60,7 @@ public class RobotState {
         return yPos;
     }
 
-    public RobotDirection geDirection() {
+    public RobotDirection direction() {
         return direction;
     }
 
@@ -66,5 +84,21 @@ public class RobotState {
         result = 31 * result + yPos;
         result = 31 * result + direction.hashCode();
         return result;
+    }
+
+    @Override
+    public String toString() {
+        if (this.equals(UNKNOWN)) {
+            return "";
+        } else {
+            StringBuilder report = new StringBuilder();
+            report.append(xPos);
+            report.append(",");
+            report.append(yPos);
+            report.append(",");
+            report.append(direction);
+
+            return report.toString();
+        }
     }
 }

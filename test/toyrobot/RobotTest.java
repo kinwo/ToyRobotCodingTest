@@ -1,3 +1,5 @@
+package toyrobot;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +22,8 @@ public class RobotTest {
 // setup
     @Before
     public void setUp() {
-        robot = new Robot();
+        // Robot
+        robot = new Robot(new Table(5, 5));
     }
 
 // teardown
@@ -95,7 +98,7 @@ public class RobotTest {
         robot.move();
         robot.left();
 
-        assertEquals(newState(0, 4, EAST), robot.state());
+        assertEquals(newState(1, 2, WEST), robot.state());
     }
 
     @Test
