@@ -5,7 +5,7 @@ package toyrobot;
  */
 public enum RobotDirection {
 
-    NORTH("NORTH") {
+    NORTH {
         @Override
         public RobotDirection left() {
             return WEST;
@@ -16,7 +16,7 @@ public enum RobotDirection {
             return EAST;
         }
     },
-    SOUTH("SOUTH") {
+    SOUTH {
         @Override
         public RobotDirection left() {
             return EAST;
@@ -27,7 +27,7 @@ public enum RobotDirection {
             return WEST;
         }
     },
-    EAST("EAST") {
+    EAST {
         @Override
         public RobotDirection left() {
             return NORTH;
@@ -38,7 +38,7 @@ public enum RobotDirection {
             return SOUTH;
         }
     },
-    WEST("WEST") {
+    WEST {
         @Override
         public RobotDirection left() {
             return SOUTH;
@@ -49,7 +49,7 @@ public enum RobotDirection {
             return NORTH;
         }
     },
-    UNDEFINED("UNDEFINED") {
+    UNDEFINED {
         @Override
         public RobotDirection left() {
             return UNDEFINED;
@@ -61,13 +61,19 @@ public enum RobotDirection {
         }
     };
 
-
-    private String direction;
-
-    RobotDirection(String direction) {
-        this.direction = direction;
-    }
-
     public abstract RobotDirection left();
     public abstract RobotDirection right();
+
+    public static boolean isValid(String directionString) {
+        boolean valid = false;
+
+        try {
+            valueOf(directionString);
+            valid = true;
+        } catch (IllegalArgumentException e) {
+            valid = false;
+        }
+
+        return valid;
+    }
 }
