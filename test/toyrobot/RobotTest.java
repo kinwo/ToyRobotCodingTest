@@ -3,12 +3,11 @@ package toyrobot;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
-import static toyrobot.RobotDirection.*;
-import static toyrobot.RobotState.*;
-import static toyrobot.RobotState.UNKNOWN;
 
-import toyrobot.Robot;
+import static org.junit.Assert.assertEquals;
+import static toyrobot.RobotDirection.*;
+import static toyrobot.RobotState.UNKNOWN;
+import static toyrobot.RobotState.newState;
 
 /**
  * A simple Unit Test for Robot class
@@ -122,19 +121,20 @@ public class RobotTest {
     @Test
     public void testRightThenMove() {
         robot.place(3, 1, EAST);
-        robot.left();
+        robot.right();
         robot.move();
 
-        assertEquals(newState(3, 2, NORTH), robot.state());
+        assertEquals(newState(3, 0, SOUTH), robot.state());
     }
 
     @Test
     public void testLeftThenRightThenMove() {
         robot.place(1, 3, SOUTH);
         robot.left();
+        robot.right();
         robot.move();
 
-        assertEquals(newState(2, 3, EAST), robot.state());
+        assertEquals(newState(1, 2, SOUTH), robot.state());
     }
 
     @Test
@@ -218,4 +218,39 @@ public class RobotTest {
         assertEquals(newState(3, 0, SOUTH), robot.state());
     }
 
+// String Parsing test
+    @Test
+    public void testInvalidCommandString() {
+        robot.place(1, 1, EAST);
+        robot.runCommand("   kasdfkads");
+        assertEquals(newState(1, 1, EAST), robot.state());
+    }
+
+    @Test
+    public void testInvalidPLACECommandStringWithMissingArgs() {
+        robot.place(1, 1, EAST);
+        robot.runCommand("PLACE");
+        assertEquals(newState(1, 1, EAST), robot.state());
+    }
+
+    @Test
+    public void testInvalidPLACECommandStringWithInvalidXPos() {
+        robot.place(1, 1, EAST);
+        robot.runCommand("PLACE p,2,SOUTH");
+        assertEquals(newState(1, 1, EAST), robot.state());
+    }
+
+    @Test
+    public void testInvalidPLACECommandStringWithInvalidYPos() {
+        robot.place(1, 1, EAST);
+        robot.runCommand("PLACE 2,k,NORTH");
+        assertEquals(newState(1, 1, EAST), robot.state());
+    }
+
+    @Test
+    public void testInvalidPLACECommandStringWithInvalidDirection() {
+        robot.place(1, 1, EAST);
+        robot.runCommand("PLACE 2,2,okok");
+        assertEquals(newState(1, 1, EAST), robot.state());
+    }
 }
