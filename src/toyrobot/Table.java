@@ -3,6 +3,9 @@ package toyrobot;
 import static toyrobot.RobotState.newState;
 
 /**
+ * A simple Table for Robot to act upon.
+ * It also validates movement.
+ *
  * Created by henry on 17/05/2014.
  */
 public class Table {
