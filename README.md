@@ -1,9 +1,9 @@
 ## A simple Java Robot Test
 
-Author: Henry Chan
-IDE: Intellij CE 13.1.2
-Requirements: Java JDK 1.7
-Usage: java -cp classes toyrobot.RobotApp [File path of the command file]
+Author: Henry Chan   
+IDE: Intellij CE 13.1.2  
+Requirements: Java JDK 1.7  
+Usage: java -cp classes toyrobot.RobotApp [File path of the command file]  
 
 ### Fixture
 SingleTest.txt
