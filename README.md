@@ -1,20 +1,23 @@
 h3. A simple Java Robot Test
 
 Author: Henry Chan
+IDE: Intellij CE 13.1.2
 Requirements: Java JDK 1.7
-Usage: java RobotApp [File path of the command file]
+Usage: java -cp classes toyrobot.RobotApp [File path of the command file]
 
 Fixture:
+SingleTest.txt
 TestCommands.txt
 InvalidCommands.txt
 
 E.g
-java RobotApp TestCommands.txt
-java RobotApp InvalidCommands.txt
+java -cp classes toyrobot.RobotApp SingleTest.txt
+java -cp classes toyrobot.RobotApp TestCommands.txt
+java -cp classes toyrobot.RobotApp InvalidCommands.txt
 
-IDE: Intellij CE 13.1.2
 
 Notes:
-* Input through line separated commands in file.
-* TDD - JUnit RobotTest.java
+* Input through line-separated commands in file.
+* Test Driver Development - JUnit RobotTest.java
 * Lightweight Java
+* Simple RobotDirection state machine using Enum

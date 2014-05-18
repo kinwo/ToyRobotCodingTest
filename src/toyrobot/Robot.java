@@ -5,6 +5,8 @@ import java.util.Scanner;
 import static toyrobot.RobotState.*;
 
 /**
+ * The main Robot model class with the basic action methods
+ *
  * Created by henry on 17/05/2014.
  */
 public class Robot {
@@ -37,40 +39,41 @@ public class Robot {
         String output = "";
         String action = "";
 
-        Scanner sc = new Scanner(command);
-        sc.useDelimiter(" ");
+        try (Scanner sc = new Scanner(command)) {
+            sc.useDelimiter(" ");
 
-        if (sc.hasNext()) {
-            action = sc.next();
-        }
+            if (sc.hasNext()) {
+                action = sc.next();
+            }
 
-        switch (action) {
-            case "PLACE": {
-                if (sc.hasNext()) {
-                    parsePlaceAndRun(sc.next());
+            switch (action) {
+                case "PLACE": {
+                    if (sc.hasNext()) {
+                        parsePlaceAndRun(sc.next());
+                    }
+                    break;
                 }
-                break;
-            }
-            case "MOVE": {
-                move();
-                break;
-            }
-            case "LEFT": {
-                left();
-                break;
-            }
-            case "RIGHT": {
-                right();
-                break;
-            }
-            case "REPORT": {
-                output = report();
-                break;
-            }
-            default: {
-                // do nothing
-            }
+                case "MOVE": {
+                    move();
+                    break;
+                }
+                case "LEFT": {
+                    left();
+                    break;
+                }
+                case "RIGHT": {
+                    right();
+                    break;
+                }
+                case "REPORT": {
+                    output = report();
+                    break;
+                }
+                default: {
+                    // do nothing
+                }
 
+            }
         }
 
         return output;
@@ -87,33 +90,34 @@ public class Robot {
         int xPos;
         int yPos;
 
-        Scanner placeSC = new Scanner(arguments);
-        placeSC.useDelimiter(",");
+        try (Scanner placeSC = new Scanner(arguments)) {
+            placeSC.useDelimiter(",");
 
-        // parse xPos
-        if (!placeSC.hasNextInt()) {
-            return;
-        }
-        xPos = placeSC.nextInt();
+            // parse xPos
+            if (!placeSC.hasNextInt()) {
+                return;
+            }
+            xPos = placeSC.nextInt();
 
-        // parse yPos
-        if (!placeSC.hasNextInt()) {
-            return;
-        }
-        yPos = placeSC.nextInt();
+            // parse yPos
+            if (!placeSC.hasNextInt()) {
+                return;
+            }
+            yPos = placeSC.nextInt();
 
-        // parse direction
-        if (!placeSC.hasNext()) {
-            return;
-        }
-        String directionString = placeSC.next().trim();
-        if (!RobotDirection.isValid(directionString)) {
-            return;
-        }
-        RobotDirection direction = RobotDirection.valueOf(directionString);
+            // parse direction
+            if (!placeSC.hasNext()) {
+                return;
+            }
+            String directionString = placeSC.next().trim();
+            if (!RobotDirection.isValid(directionString)) {
+                return;
+            }
+            RobotDirection direction = RobotDirection.valueOf(directionString);
 
-        // run place command
-        place(xPos, yPos, direction);
+            // run place command
+            place(xPos, yPos, direction);
+        }
     }
 
     public void place(int x, int y, RobotDirection facing) {

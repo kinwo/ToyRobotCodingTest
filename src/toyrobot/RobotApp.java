@@ -18,16 +18,14 @@ public class RobotApp {
         }
 
         String fileName = args[0];
-        try (
-                BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))
-            ) {
-            String line = null;
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
+            String line;
 
             // create Robot
             Robot robot = new Robot(new Table(5, 5));
             while((line = bufferedReader.readLine())!=null){
                 System.out.println(line);
-                String output = "";
+                String output;
                 if (!(output = robot.runCommand(line)).equals("")) {
                     System.out.println("Output: " + output);
                 }

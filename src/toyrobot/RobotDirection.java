@@ -1,6 +1,8 @@
 package toyrobot;
 
 /**
+ * Robot Direction enum with simple state machine for movement.
+ *
  * Created by henry on 17/05/2014.
  */
 public enum RobotDirection {
