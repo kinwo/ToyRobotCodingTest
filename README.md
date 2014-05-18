@@ -6,17 +6,17 @@ Requirements: Java JDK 1.7
 Usage: java -cp classes toyrobot.RobotApp [File path of the command file]  
 
 ### Fixture
-SingleTest.txt
-TestCommands.txt
-InvalidCommands.txt
+SingleTest.txt  
+TestCommands.txt  
+InvalidCommands.txt  
 
 ### Examples
-java -cp classes toyrobot.RobotApp SingleTest.txt
-java -cp classes toyrobot.RobotApp TestCommands.txt
-java -cp classes toyrobot.RobotApp InvalidCommands.txt
+java -cp classes toyrobot.RobotApp SingleTest.txt  
+java -cp classes toyrobot.RobotApp TestCommands.txt  
+java -cp classes toyrobot.RobotApp InvalidCommands.txt  
 
 
-Notes:
+Notes:  
 * Input through line-separated commands in file.
 * Test Driver Development - JUnit RobotTest.java
 * Lightweight Java
