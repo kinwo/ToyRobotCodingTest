@@ -17,7 +17,7 @@ java -cp classes toyrobot.RobotApp InvalidCommands.txt
 
 
 Notes:  
-* Input through line-separated commands in file.
-* Test Driver Development - JUnit RobotTest.java
-* Lightweight Java
-* Simple RobotDirection state machine using Enum
+- Input through line-separated commands in file.
+- Test Driver Development - JUnit RobotTest.java
+- Lightweight Java
+- Simple RobotDirection state machine using Enum
